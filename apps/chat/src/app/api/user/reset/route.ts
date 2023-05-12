@@ -11,6 +11,7 @@ import { ResponseStatus } from "@/app/api/typing.d";
 export async function POST(req: NextRequest): Promise<Response> {
   const email = req.headers.get("email")!;
   const user = new UserLogic();
+    async setResetChancesOf(email: string, chances: number) {
 
   const chancesRemain = await user.setResetChancesOf(email, -1);
   if (!chancesRemain)
