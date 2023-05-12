@@ -73,4 +73,11 @@ export class UserLogic {
   getResetChancesOf(email: string) {
     return this.dal.readResetChances(email);
   }
+
+  /**
+   * @returns true if the reset chances were set, false if the user does not exist
+   */
+  async setResetChancesOf(email: string, chances: number): Promise<boolean> {
+    return this.update(email, { resetChances: chances });
+  }
 }
