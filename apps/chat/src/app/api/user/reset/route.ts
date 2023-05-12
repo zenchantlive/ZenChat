@@ -12,7 +12,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   const email = req.headers.get("email")!;
   const user = new UserLogic();
 
-  const chancesRemain = await user.setResetChancesOf(email, -1);
+  const chancesRemain = await user.getResetChancesOf(email, -1);
   if (!chancesRemain)
     return NextResponse.json({
       status: ResponseStatus.Failed,
